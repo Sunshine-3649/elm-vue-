@@ -145,6 +145,7 @@ export default {
       this.selectedFood = food;
       this.$refs.food.show();
     },
+    // 监听子组件的触发的点击事件
     addFood(target) {
       this._drop(target);
     },

@@ -1,6 +1,7 @@
 <template>
   <transition name="move">
     <div v-show="showFlag" class="food" ref="food">
+      <!--头部部分  -->
       <div class="food-content">
         <div class="image-header">
           <img :src="food.image">
@@ -8,6 +9,7 @@
             <i class="icon-arrow_lift"></i>
           </div>
         </div>
+        <!--图片下发的文字描述  -->
         <div class="content">
           <h1 class="title">{{food.name}}</h1>
           <div class="detail">
@@ -20,26 +22,37 @@
           <div class="cartcontrol-wrapper">
             <cartcontrol @add="addFood" :food="food"></cartcontrol>
           </div>
+          <!--增加过渡动画，解决点击加入购物车时DOM元素隐藏过快  -->
           <transition name="fade">
             <div @click.stop.prevent="addFirst" class="buy" v-show="!food.count || food.count===0">
               加入购物车
             </div>
           </transition>
         </div>
+        <!--分隔块  -->
         <split v-show="food.info"></split>
+        <!--商品信息  -->
         <div class="info" v-show="food.info">
           <h1 class="title">商品信息</h1>
           <p class="text">{{food.info}}</p>
         </div>
         <split></split>
+        <!--商品评价  -->
         <div class="rating">
           <h1 class="title">商品评价</h1>
+          <!--传入子组件中需要的参数  -->
+          <!--selectRating: 父组件监听子组件传出的选择的type值  -->
+          <!--toggleContent: 父组件监听子组件是否选中 -->
+          <!--selectType: 父组件传入的type值  -->
+          <!--onlyContent: 父组件传入的boolean值  -->
+          <!--desc: 父组件传入的描述信息  -->
+          <!--ratings: 父组件传入的评价数据  -->
           <ratingselect @select="selectRating" @toggle="toggleContent" :selectType="selectType"
                         :onlyContent="onlyContent" :desc="desc"
                         :ratings="food.ratings"></ratingselect>
           <div class="rating-wrapper">
             <ul v-show="food.ratings && food.ratings.length">
-              <li v-show="needShow(rating.rateType,rating.text)" v-for="rating in food.ratings"
+              <li v-show="needShow(rating.rateType,rating.text)" v-for="(rating, index) in food.ratings" :key="index"
                   class="rating-item border-1px">
                 <div class="user">
                   <span class="name">{{rating.username}}</span>
@@ -62,7 +75,9 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
   import Vue from 'vue';
+  // export导出时用{}
   import {formatDate} from 'common/js/date';
+  // export default不需要{}
   import cartcontrol from 'components/cartcontrol/cartcontrol';
   import ratingselect from 'components/ratingselect/ratingselect';
   import split from 'components/split/split';
@@ -78,9 +93,9 @@
     data() {
       return {
         showFlag: false,
-        selectType: ALL,
-        onlyContent: true,
-        desc: {
+        selectType: ALL, // 初始化子组件数据ratingselect
+        onlyContent: true, // 初始化子组件数据ratingselect
+        desc: { // 初始化子组件数据ratingselect
           all: '全部',
           positive: '推荐',
           negative: '吐槽'
@@ -92,6 +107,7 @@
         this.showFlag = true;
         this.selectType = ALL;
         this.onlyContent = true;
+        // 添加DOM元素，初始化BScroll
         this.$nextTick(() => {
           if (!this.scroll) {
             this.scroll = new BScroll(this.$refs.food, {
@@ -105,6 +121,7 @@
       hide() {
         this.showFlag = false;
       },
+      // 第一次点击购物车，发送事件到父组件，设置初始值为1
       addFirst(event) {
         if (!event._constructed) {
           return;
@@ -125,12 +142,14 @@
       addFood(target) {
         this.$emit('add', target);
       },
+      // 监听子组件传入的值，改变状态
       selectRating(type) {
         this.selectType = type;
         this.$nextTick(() => {
           this.scroll.refresh();
         });
       },
+      // 监听子组件传入的值，改变状态
       toggleContent() {
         this.onlyContent = !this.onlyContent;
         this.$nextTick(() => {
