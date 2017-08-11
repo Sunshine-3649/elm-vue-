@@ -16,26 +16,30 @@
 </template>
 
 <script type="text/ecmascript-6">
-  const POSITIVE = 0;
-  const NEGATIVE = 1;
-  const ALL = 2;
+  const POSITIVE = 0; // 满意
+  const NEGATIVE = 1; // 不满意
+  const ALL = 2; // 所有
 
   export default {
     props: {
       ratings: {
         type: Array,
+        // 数组和对象都要返回一个函数
         default() {
           return [];
         }
       },
+      // 选择的类型
       selectType: {
         type: Number,
         default: ALL
       },
+      // 为true可看到所有的
       onlyContent: {
         type: Boolean,
         default: false
       },
+      // 组件传入的初始默认值
       desc: {
         type: Object,
         default() {
@@ -48,11 +52,13 @@
       }
     },
     computed: {
+      // 过滤得到POSITIVE相同的值
       positives() {
         return this.ratings.filter((rating) => {
           return rating.rateType === POSITIVE;
         });
       },
+      // 过滤得到NEGATIVE相同的值
       negatives() {
         return this.ratings.filter((rating) => {
           return rating.rateType === NEGATIVE;
@@ -60,12 +66,14 @@
       }
     },
     methods: {
+      // switch选择触发的事件
       select(type, event) {
         if (!event._constructed) {
           return;
         }
         this.$emit('select', type);
       },
+      // 是否选中只看以后内容评价
       toggleContent(event) {
         if (!event._constructed) {
           return;
