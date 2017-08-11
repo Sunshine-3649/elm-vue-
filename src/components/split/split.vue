@@ -1,4 +1,5 @@
 <template>
+  <!--注册一个小块组件  -->
   <div class="split"></div>
 </template>
 
