@@ -1,6 +1,8 @@
 <template>
   <div class="seller" ref="seller">
+    <!--商家内容区  -->
     <div class="seller-content">
+      <!--商家头部基础信息  -->
       <div class="overview">
         <h1 class="title">{{seller.name}}</h1>
         <div class="desc border-1px">
@@ -33,35 +35,41 @@
           <span class="text">{{favoriteText}}</span>
         </div>
       </div>
+      <!--分隔块  -->
       <split></split>
+      <!--商家公告  -->
       <div class="bulletin">
         <h1 class="title">公告与活动</h1>
         <div class="content-wrapper border-1px">
           <p class="content">{{seller.bulletin}}</p>
         </div>
         <ul v-if="seller.supports" class="supports">
-          <li class="support-item border-1px" v-for="(item,index) in seller.supports">
+          <li class="support-item border-1px" v-for="(item,index) in seller.supports" :key="index">
             <span class="icon" :class="classMap[seller.supports[index].type]"></span>
             <span class="text">{{seller.supports[index].description}}</span>
           </li>
         </ul>
       </div>
+      <!--分隔块  -->
       <split></split>
+      <!--商家实景  -->
       <div class="pics">
         <h1 class="title">商家实景</h1>
         <div class="pic-wrapper" ref="picWrapper">
           <ul class="pic-list" ref="picList">
-            <li class="pic-item" v-for="pic in seller.pics">
+            <li class="pic-item" v-for="(pic, index) in seller.pics" :key="index">
               <img :src="pic" width="120" height="90">
             </li>
           </ul>
         </div>
       </div>
+      <!--分隔块  -->
       <split></split>
+      <!--商家信息  -->
       <div class="info">
         <h1 class="title border-1px">商家信息</h1>
         <ul>
-          <li class="info-item" v-for="info in seller.infos">{{info}}</li>
+          <li class="info-item" v-for="(info, index) in seller.infos" :key="index">{{info}}</li>
         </ul>
       </div>
     </div>
@@ -82,6 +90,7 @@
     },
     data() {
       return {
+        // 本地读取客户数据
         favorite: (() => {
           return loadFromLocal(this.seller.id, 'favorite', false);
         })()
@@ -96,6 +105,7 @@
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     },
     watch: {
+      // 数据发生变化时, 初始化BScroll
       'seller'() {
         this.$nextTick(() => {
           this._initScroll();
@@ -103,6 +113,7 @@
         });
       }
     },
+    // 初始化BScroll, 保证DOM已渲染
     mounted() {
       this.$nextTick(() => {
         this._initScroll();
@@ -110,6 +121,7 @@
       });
     },
     methods: {
+      // 切换收藏商家
       toggleFavorite(event) {
         if (!event._constructed) {
           return;
@@ -126,16 +138,23 @@
           this.scroll.refresh();
         }
       },
+      // 定义图片的横向滚动
       _initPics() {
         if (this.seller.pics) {
+          // 图片宽度
           let picWidth = 120;
+          // 右边的margin
           let margin = 6;
+          // ul的宽度
           let width = (picWidth + margin) * this.seller.pics.length - margin;
           this.$refs.picList.style.width = width + 'px';
+          // 重绘DOM
           this.$nextTick(() => {
             if (!this.picScroll) {
               this.picScroll = new BScroll(this.$refs.picWrapper, {
+                // 确保横向滚动
                 scrollX: true,
+                // 竖直方向上滚动，横线滑动
                 eventPassthrough: 'vertical'
               });
             } else {

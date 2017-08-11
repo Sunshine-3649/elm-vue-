@@ -1,3 +1,4 @@
+// 本地存储数据
 export function saveToLocal(id, key, value) {
 	let seller = window.localStorage.__seller__;
 	if (!seller) {
@@ -13,6 +14,7 @@ export function saveToLocal(id, key, value) {
 	window.localStorage.__seller__ = JSON.stringify(seller);
 };
 
+// 读取本地数据
 export function loadFromLocal(id, key, def) {
 	let seller = window.localStorage.__seller__;
 	if (!seller) {
