@@ -1,44 +1,44 @@
-vue »ù±¾ÏîÄ¿´î½¨
-1. npm install --global vue-cli (´´½¨vue-cli½ÅÊÖ¼Ü£¬µÚÒ»´Î°²×°ÓÃ£¬µÚ¶ş´Î¾ÍÂÔ¹ı£©
-2. vue init webpack my-project £¨³õÊ¼»¯Ò»¸övue+webpackµÄÏîÄ¿£¬Ãû×Ö½Ğmy-project£©
-3. cd my-project £¨´ò¿ªÏîÄ¿£©
-4. npm install £¨°²×°ÒÀÀµ£©
-5. npm run dev £¨ÔËĞĞÏîÄ¿£©
+ï»¿vue åŸºæœ¬é¡¹ç›®æ­å»º
+1. npm install --global vue-cli (åˆ›å»ºvue-cliè„šæ‰‹æ¶ï¼Œç¬¬ä¸€æ¬¡å®‰è£…ç”¨ï¼Œç¬¬äºŒæ¬¡å°±ç•¥è¿‡ï¼‰
+2. vue init webpack my-project ï¼ˆåˆå§‹åŒ–ä¸€ä¸ªvue+webpackçš„é¡¹ç›®ï¼Œåå­—å«my-projectï¼‰
+3. cd my-project ï¼ˆæ‰“å¼€é¡¹ç›®ï¼‰
+4. npm install ï¼ˆå®‰è£…ä¾èµ–ï¼‰
+5. npm run dev ï¼ˆè¿è¡Œé¡¹ç›®ï¼‰
 
-»òÕßÓÃcnpm £¨ÌÔ±¦¾µÏñ£©
-»òÕßÓÃyarn £¨°ü¹ÜÀí¹¤¾ß£©
+æˆ–è€…ç”¨cnpm ï¼ˆæ·˜å®é•œåƒï¼‰
+æˆ–è€…ç”¨yarn ï¼ˆåŒ…ç®¡ç†å·¥å…·ï¼‰
 
 
 
-vux »ù±¾ÏîÄ¿´î½¨
-1. npm install vue-cli -g £¨Í¬ÉÏ£©
-2. vue init airyland/vux2 projectPath £¨Í¬ÉÏ£©
+vux åŸºæœ¬é¡¹ç›®æ­å»º
+1. npm install vue-cli -g ï¼ˆåŒä¸Šï¼‰
+2. vue init airyland/vux2 projectPath ï¼ˆåŒä¸Šï¼‰
 3. cd projectPath
 4. npm install --registry=https://registry.npm.taobao.org
 5. npm run dev
 
-»òÕß yarn config set registry https://registry.npm.taobao.org
+æˆ–è€… yarn config set registry https://registry.npm.taobao.org
      yarn
 
-×¢Òâ£ºÖ±½ÓÊ¹ÓÃcnpm»áµ¼ÖÂÒÀÀµ°²×°²»ÕıÈ·
+æ³¨æ„ï¼šç›´æ¥ä½¿ç”¨cnpmä¼šå¯¼è‡´ä¾èµ–å®‰è£…ä¸æ­£ç¡®
 
-¶îÍâµÄÅäÖÃ£ºhttps://vux.li/#/
+é¢å¤–çš„é…ç½®ï¼šhttps://vux.li/#/
 
-ÊÖ¶¯Ê¹ÓÃ£¬Ìí¼ÓÅäÖÃ
-1. ²å¼şÅäÖÃ build/webpack.base.conf.js 
+æ‰‹åŠ¨ä½¿ç”¨ï¼Œæ·»åŠ é…ç½®
+1. æ’ä»¶é…ç½® build/webpack.base.conf.js 
 module.exports = vuxLoader.merge(webpackConfig, {
   plugins: ['vux-ui', 'progress-bar', 'duplicate-style']
 });
 
-2.Ìí¼Óviewport meta index.html
+2.æ·»åŠ viewport meta index.html
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 
-3. Ìí¼ÓFastclickÒÆ³ıÒÆ¶¯¶Ëµã»÷ÑÓ³Ù main.js
+3. æ·»åŠ Fastclickç§»é™¤ç§»åŠ¨ç«¯ç‚¹å‡»å»¶è¿Ÿ main.js
 const FastClick = require('fastclick')
 FastClick.attach(document.body)
 
-4. ·¢ËÍajaxÇëÇó main.js
-require('es6-promise').polyfill() £¨polyfillÒÀÀµ£©
+4. å‘é€ajaxè¯·æ±‚ main.js
+require('es6-promise').polyfill() ï¼ˆpolyfillä¾èµ–ï¼‰
 import { AjaxPlugin } from 'vux'
 Vue.use(AjaxPlugin)
 
@@ -46,17 +46,17 @@ console.log(Vue.http)
 
 
 
-vuex µ¼Èë
-1. npm install vuex --save £¨È«¾Ö°²×°vuexÎÄ¼ş£¬ÅäÖÃpagejsonÎÄ¼ş£©
+vuex å¯¼å…¥
+1. npm install vuex --save ï¼ˆå…¨å±€å®‰è£…vuexæ–‡ä»¶ï¼Œé…ç½®pagejsonæ–‡ä»¶ï¼‰
 2. import Vue from 'vue'
    import Vuex from 'vuex'
 
    Vue.use(Vuex)
 
-»òÕßÓÃyarn
+æˆ–è€…ç”¨yarn
 yarn add vuex
 
-»òÕß ×Ô¼ºÏÂÔØ°²×°ÒÀÀµ
+æˆ–è€… è‡ªå·±ä¸‹è½½å®‰è£…ä¾èµ–
 git clone https://github.com/vuejs/vuex.git node_modules/vuex
 cd node_modules/vuex
 npm install
@@ -65,45 +65,45 @@ npm run build
 
 
 
-½â¾ö8080¶Ë¿Ú¶Ë¿ÚÕ¼ÓÃÎÊÌâ
-1. Windows+R cmd £¨´ò¿ªĞ¡ºÚ´°£©
-2. netstat -ano £¨²é¿´ËùÓĞ¶Ë¿Ú£©
-3. netstat -ano|findstr "8080" £¨ÕÒµ½Ö¸¶¨µÄ¶Ë¿ÚºÅ£©
-4. ´ò¿ªÈÎÎñ¹ÜÀíÆ÷ ÕÒµ½ ÏêÏ¸ĞÅÏ¢ PID ¶ÔÓ¦µÄ¶Ë¿ÚºÅ
+è§£å†³8080ç«¯å£ç«¯å£å ç”¨é—®é¢˜
+1. Windows+R cmd ï¼ˆæ‰“å¼€å°é»‘çª—ï¼‰
+2. netstat -ano ï¼ˆæŸ¥çœ‹æ‰€æœ‰ç«¯å£ï¼‰
+3. netstat -ano|findstr "8080" ï¼ˆæ‰¾åˆ°æŒ‡å®šçš„ç«¯å£å·ï¼‰
+4. æ‰“å¼€ä»»åŠ¡ç®¡ç†å™¨ æ‰¾åˆ° è¯¦ç»†ä¿¡æ¯ PID å¯¹åº”çš„ç«¯å£å·
 
 
-ÁíÍâ·ÖÏí¼¸¸önpmµÄ³£ÓÃÃüÁî
+å¦å¤–åˆ†äº«å‡ ä¸ªnpmçš„å¸¸ç”¨å‘½ä»¤
 	
-npm -v          	#ÏÔÊ¾°æ±¾£¬¼ì²énpm ÊÇ·ñÕıÈ·°²×°¡£
+npm -v          	#æ˜¾ç¤ºç‰ˆæœ¬ï¼Œæ£€æŸ¥npm æ˜¯å¦æ­£ç¡®å®‰è£…ã€‚
  
-npm install express   	#°²×°expressÄ£¿é
+npm install express   	#å®‰è£…expressæ¨¡å—
  
-npm install -g express  #È«¾Ö°²×°expressÄ£¿é
+npm install -g express  #å…¨å±€å®‰è£…expressæ¨¡å—
  
-npm list        	#ÁĞ³öÒÑ°²×°Ä£¿é
+npm list        	#åˆ—å‡ºå·²å®‰è£…æ¨¡å—
  
-npm show express     	#ÏÔÊ¾Ä£¿éÏêÇé
+npm show express     	#æ˜¾ç¤ºæ¨¡å—è¯¦æƒ…
  
-npm update        	#Éı¼¶µ±Ç°Ä¿Â¼ÏÂµÄÏîÄ¿µÄËùÓĞÄ£¿é
+npm update        	#å‡çº§å½“å‰ç›®å½•ä¸‹çš„é¡¹ç›®çš„æ‰€æœ‰æ¨¡å—
  
-npm update express    	#Éı¼¶µ±Ç°Ä¿Â¼ÏÂµÄÏîÄ¿µÄÖ¸¶¨Ä£¿é
+npm update express    	#å‡çº§å½“å‰ç›®å½•ä¸‹çš„é¡¹ç›®çš„æŒ‡å®šæ¨¡å—
  
-npm update -g express  	#Éı¼¶È«¾Ö°²×°µÄexpressÄ£¿é
+npm update -g express  	#å‡çº§å…¨å±€å®‰è£…çš„expressæ¨¡å—
  
-npm uninstall express  	#É¾³ıÖ¸¶¨µÄÄ£¿é
+npm uninstall express  	#åˆ é™¤æŒ‡å®šçš„æ¨¡å—
 
 
-node-sass ÌÔ±¦¾µÏñ°²×°
+node-sass æ·˜å®é•œåƒå®‰è£…
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 
-node-sass±¨´íÃ»ÓĞÒÀÀµÏî
+node-sassæŠ¥é”™æ²¡æœ‰ä¾èµ–é¡¹
 cnpm i node-sass
 cnpm i node-sass
 cnpm i node-sass
 
 Error:Cannot find module 'stylus'
-½â¾ö°ì·¨£º 
-ÖØĞÂnpm install stylus ºÍ stylus-loader
+è§£å†³åŠæ³•ï¼š 
+é‡æ–°npm install stylus å’Œ stylus-loader
 
-npm install stylus ¨Csave-dev 
-npm install stylus-loader ¨Csave-dev
+npm install stylus â€“save-dev 
+npm install stylus-loader â€“save-dev
